@@ -2,6 +2,7 @@ package com.sys.appstore.entity;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author rensf
@@ -30,6 +31,11 @@ public class TdSysApp implements Serializable {
      * app名称
      */
     private String appname;
+
+    /**
+     * app类型
+     */
+    private String apptype;
 
     /**
      * app大小
@@ -76,5 +82,13 @@ public class TdSysApp implements Serializable {
      */
     private Integer appdown;
 
+    /**
+     * 上传时间
+     */
+    private LocalDateTime createtime;
 
+    /**
+     * 生效标志
+     */
+    private Integer flag = 1;
 }

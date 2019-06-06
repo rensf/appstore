@@ -45,5 +45,8 @@ public class TrSysComment implements Serializable {
      */
     private LocalDateTime commenttime;
 
-
+    /**
+     * 生效标志
+     */
+    private Integer flag = 1;
 }

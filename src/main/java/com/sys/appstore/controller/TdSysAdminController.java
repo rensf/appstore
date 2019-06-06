@@ -32,6 +32,5 @@ public class TdSysAdminController {
         return JSON.toJSONString(tdSysAdminService.login(tdSysAdmin));
     }
 
-
 }
 

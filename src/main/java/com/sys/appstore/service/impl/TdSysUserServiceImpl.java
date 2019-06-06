@@ -14,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * <p>
  * 服务实现类
@@ -34,13 +30,13 @@ public class TdSysUserServiceImpl extends ServiceImpl<TdSysUserMapper, TdSysUser
     private TdSysUserMapper tdSysUserMapper;
 
     @Override
-    public IPage<TdSysUser> selectUser(JSONObject param) {
-        QueryWrapper<TdSysUser> QUERY_WRAPPER = new QueryWrapper<>();
-        QUERY_WRAPPER.eq("flag", "1");
-        QUERY_WRAPPER.like(param.getString("username") != null, "username", param.getString("username"));
-        QUERY_WRAPPER.eq(param.getString("telno") != null, "telno", param.getString("telno"));
+    public IPage<TdSysUser> selectUserByPage(JSONObject param) {
+        QueryWrapper<TdSysUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("flag", 1);
+        queryWrapper.like(param.getString("username") != null, "username", param.getString("username"));
+        queryWrapper.eq(param.getString("telno") != null, "telno", param.getString("telno"));
         Page page = new Page(param.getLong("current"), param.getLong("size"));
-        IPage<TdSysUser> result = tdSysUserMapper.selectPage(page, QUERY_WRAPPER);
+        IPage<TdSysUser> result = tdSysUserMapper.selectPage(page, queryWrapper);
         return result;
     }
 }

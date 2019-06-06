@@ -1,14 +1,21 @@
 package com.sys.appstore.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sys.appstore.entity.TdSysApp;
 import com.sys.appstore.mapper.TdSysAppMapper;
 import com.sys.appstore.service.ITdSysAppService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author rensf
@@ -17,4 +24,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class TdSysAppServiceImpl extends ServiceImpl<TdSysAppMapper, TdSysApp> implements ITdSysAppService {
 
+    @Autowired
+    private TdSysAppMapper tdSysAppMapper;
+
+    @Override
+    public IPage<TdSysApp> selectAppByPage(JSONObject param) {
+        QueryWrapper<TdSysApp> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("flag", 1);
+        queryWrapper.like(param.getString("appname") != null, "appname", param.getString("appname"));
+        queryWrapper.eq(param.getString("apptype") != null, "apptype", param.getString("apptype"));
+        Page page = new Page(param.getLong("current"), param.getLong("size"));
+        IPage<TdSysApp> result = tdSysAppMapper.selectPage(page, queryWrapper);
+        return result;
+    }
+
+    @Override
+    public Integer addApp(TdSysApp tdSysApp) {
+        tdSysAppMapper.insert(tdSysApp);
+        return null;
+    }
 }

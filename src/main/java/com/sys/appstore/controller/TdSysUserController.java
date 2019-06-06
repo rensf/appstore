@@ -33,7 +33,7 @@ public class TdSysUserController {
     @RequestMapping("/queryUser")
     @ResponseBody
     public String queryUser(@RequestBody JSONObject param) throws Exception {
-        return JSONObject.toJSONString(tdSysUserService.selectUser(param));
+        return JSONObject.toJSONString(tdSysUserService.selectUserByPage(param));
     }
 }
 

@@ -10,3 +10,6 @@ server:
 logging:
   level:
     com.sys.appstore: debug
+
+project:
+  imagepath: D:\tmp\image

@@ -1,6 +1,7 @@
 package com.sys.appstore.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -45,5 +46,13 @@ public class TdSysUser implements Serializable {
      */
     private String email;
 
+    /**
+     * 生效标志
+     */
+    private Integer flag = 1;
 
+    /**
+     * 注册时间
+     */
+    private LocalDateTime createtime;
 }

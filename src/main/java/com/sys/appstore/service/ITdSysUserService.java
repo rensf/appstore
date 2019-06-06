@@ -15,5 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-05-14
  */
 public interface ITdSysUserService extends IService<TdSysUser> {
-    IPage<TdSysUser> selectUser(JSONObject param) throws Exception;
+    IPage<TdSysUser> selectUserByPage(JSONObject param) throws Exception;
 }

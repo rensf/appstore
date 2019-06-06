@@ -1,13 +1,19 @@
 package com.sys.appstore.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.alibaba.fastjson.JSONObject;
+import com.sys.appstore.entity.TdSysApp;
+import com.sys.appstore.service.ITdSysAppService;
+import com.sys.appstore.utils.UploadFileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.io.IOException;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author rensf
@@ -16,6 +22,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/td-sys-app")
 public class TdSysAppController {
+
+    @Autowired
+    private ITdSysAppService tdSysAppService;
+
+    @RequestMapping("/queryApp")
+    @ResponseBody
+    public String queryApp(@RequestBody JSONObject param) throws Exception {
+        return JSONObject.toJSONString(tdSysAppService.selectAppByPage(param));
+    }
+
+    @RequestMapping("/uploadImage")
+    @ResponseBody
+    public String uploadAppicon(@RequestParam("file") MultipartFile file) throws IOException {
+        return UploadFileUtil.uploadImage(file);
+    }
 
 }
 

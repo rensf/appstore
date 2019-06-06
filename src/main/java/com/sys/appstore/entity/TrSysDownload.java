@@ -35,5 +35,8 @@ public class TrSysDownload implements Serializable {
      */
     private LocalDateTime downloadtime;
 
-
+    /**
+     * 生效标志
+     */
+    private Integer flag = 1;
 }
