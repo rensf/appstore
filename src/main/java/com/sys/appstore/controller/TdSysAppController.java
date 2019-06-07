@@ -2,8 +2,10 @@ package com.sys.appstore.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.sys.appstore.config.MyPropsConfig;
 import com.sys.appstore.entity.TdSysApp;
 import com.sys.appstore.service.ITdSysAppService;
+import com.sys.appstore.utils.IDGenerator;
 import com.sys.appstore.utils.UploadFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,8 @@ public class TdSysAppController {
 
     @Autowired
     private ITdSysAppService tdSysAppService;
+    @Autowired
+    private MyPropsConfig myProps;
 
     @RequestMapping("/queryApp")
     @ResponseBody
@@ -35,7 +39,7 @@ public class TdSysAppController {
     @RequestMapping("/uploadImage")
     @ResponseBody
     public String uploadAppicon(@RequestParam("file") MultipartFile file) throws IOException {
-        return UploadFileUtil.uploadImage(file);
+        return UploadFileUtil.uploadFile(file, myProps.getFilepath());
     }
 
 }

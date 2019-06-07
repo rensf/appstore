@@ -1,7 +1,5 @@
 package com.sys.appstore.utils;
 
-import com.sys.appstore.config.MyPropsConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -10,14 +8,11 @@ import java.io.IOException;
 
 public class UploadFileUtil {
 
-    @Autowired
-    private static MyPropsConfig myProps;
-
-    public static String uploadImage(MultipartFile file) throws IOException {
+    public static String uploadFile(MultipartFile file, String filepath) throws IOException {
         String filename = file.getOriginalFilename();
         String newname = IDGenerator.idGenerator() + filename.substring(filename.indexOf("."));
-        File newFile = new File(myProps.getImagepath());
-        if(!newFile.exists()) {
+        File newFile = new File(filepath);
+        if (!newFile.exists()) {
             newFile.mkdir();
         }
         FileOutputStream out = new FileOutputStream(newFile + "/" + newname);

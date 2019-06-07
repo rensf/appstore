@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "project")
 public class MyPropsConfig {
-    private String imagepath;
+    private String filepath;
 }

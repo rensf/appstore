@@ -12,4 +12,4 @@ logging:
     com.sys.appstore: debug
 
 project:
-  imagepath: D:\tmp\image
+  filepath: D:\tmp\image

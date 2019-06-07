@@ -1,13 +1,15 @@
 package com.sys.appstore.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class IDGenerator {
 
     public synchronized static String idGenerator() {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-        return format.toString() + IDGenerator.getRandom(4);
+        String str = format.format(new Date());
+        return str + IDGenerator.getRandom(4);
     }
 
     public static String getRandom(int strLen) {
