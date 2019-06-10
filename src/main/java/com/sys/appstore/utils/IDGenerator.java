@@ -8,8 +8,7 @@ public class IDGenerator {
 
     public synchronized static String idGenerator() {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-        String str = format.format(new Date());
-        return str + IDGenerator.getRandom(4);
+        return format.format(new Date()) + IDGenerator.getRandom(4);
     }
 
     public static String getRandom(int strLen) {

@@ -5,12 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.sys.appstore.config.MyPropsConfig;
 import com.sys.appstore.entity.TdSysApp;
 import com.sys.appstore.service.ITdSysAppService;
-import com.sys.appstore.utils.IDGenerator;
-import com.sys.appstore.utils.UploadFileUtil;
+import com.sys.appstore.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -36,11 +36,23 @@ public class TdSysAppController {
         return JSONObject.toJSONString(tdSysAppService.selectAppByPage(param));
     }
 
-    @RequestMapping("/uploadImage")
+    @RequestMapping("/uploadApp")
     @ResponseBody
-    public String uploadAppicon(@RequestParam("file") MultipartFile file) throws IOException {
-        return UploadFileUtil.uploadFile(file, myProps.getFilepath());
+    public String uploadApp(@RequestParam("file") MultipartFile file) throws IOException {
+        return FileUtil.uploadFile(file, myProps.getFilepath());
     }
 
+    @RequestMapping("/previewAppImage/{filename}")
+    @ResponseBody
+    public void previewAppImage(@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+        String filepath = myProps.getFilepath() + filename;
+        FileUtil.checkFile(filepath, response);
+    }
+
+    @RequestMapping("/addApp")
+    @ResponseBody
+    public String addApp(@RequestBody TdSysApp tdSysApp) throws Exception {
+        return JSONObject.toJSONString(tdSysAppService.addApp(tdSysApp));
+    }
 }
 
