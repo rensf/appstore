@@ -8,9 +8,12 @@ import com.sys.appstore.entity.TdSysApp;
 import com.sys.appstore.mapper.TdSysAppMapper;
 import com.sys.appstore.service.ITdSysAppService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sys.appstore.utils.IDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -22,6 +25,7 @@ import java.util.List;
  * @since 2019-05-14
  */
 @Service
+@Transactional
 public class TdSysAppServiceImpl extends ServiceImpl<TdSysAppMapper, TdSysApp> implements ITdSysAppService {
 
     @Autowired
@@ -40,7 +44,8 @@ public class TdSysAppServiceImpl extends ServiceImpl<TdSysAppMapper, TdSysApp> i
 
     @Override
     public Integer addApp(TdSysApp tdSysApp) {
-        tdSysAppMapper.insert(tdSysApp);
-        return null;
+        tdSysApp.setAppid(IDGenerator.idGenerator());
+        tdSysApp.setCreatetime(LocalDateTime.now());
+        return tdSysAppMapper.insert(tdSysApp);
     }
 }
