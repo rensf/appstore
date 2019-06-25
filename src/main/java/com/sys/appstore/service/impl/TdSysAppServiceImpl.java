@@ -48,4 +48,10 @@ public class TdSysAppServiceImpl extends ServiceImpl<TdSysAppMapper, TdSysApp> i
         tdSysApp.setCreatetime(LocalDateTime.now());
         return tdSysAppMapper.insert(tdSysApp);
     }
+
+    @Override
+    public Integer delApp(TdSysApp tdSysApp) throws Exception {
+        tdSysApp.setFlag(0);
+        return tdSysAppMapper.updateById(tdSysApp);
+    }
 }

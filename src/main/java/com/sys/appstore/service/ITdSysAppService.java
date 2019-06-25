@@ -16,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ITdSysAppService extends IService<TdSysApp> {
     IPage<TdSysApp> selectAppByPage(JSONObject param) throws Exception;
     Integer addApp(TdSysApp tdSysApp) throws Exception;
+    Integer delApp(TdSysApp tdSysApp) throws Exception;
 }

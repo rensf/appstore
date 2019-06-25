@@ -55,10 +55,10 @@ public class TdSysAppController {
         return JSONObject.toJSONString(tdSysAppService.addApp(tdSysApp));
     }
 
-    @RequestMapping("delApp")
+    @RequestMapping("/delApp")
     @ResponseBody
     public String delApp(@RequestBody TdSysApp tdSysApp) throws Exception {
-        return null;
+        return JSONObject.toJSONString(tdSysAppService.delApp(tdSysApp));
     }
 }
 
