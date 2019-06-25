@@ -50,7 +50,7 @@ public class TdSysAppServiceImpl extends ServiceImpl<TdSysAppMapper, TdSysApp> i
     }
 
     @Override
-    public Integer delApp(TdSysApp tdSysApp) throws Exception {
+    public Integer delApp(TdSysApp tdSysApp) {
         tdSysApp.setFlag(0);
         return tdSysAppMapper.updateById(tdSysApp);
     }
