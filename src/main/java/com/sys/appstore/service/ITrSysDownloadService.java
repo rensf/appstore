@@ -15,5 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITrSysDownloadService extends IService<TrSysDownload> {
     IPage selectAppDownload();
-    Integer downloadApp(TdSysApp tdSysApp);
+    Integer downloadApp(TdSysApp tdSysApp) throws Exception;
 }
