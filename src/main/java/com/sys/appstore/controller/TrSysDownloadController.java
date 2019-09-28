@@ -28,7 +28,7 @@ public class TrSysDownloadController {
 
     @RequestMapping("/download")
     @ResponseBody
-    public String downloadApp(@RequestBody TdSysApp tdSysApp) {
+    public String downloadApp(@RequestBody TdSysApp tdSysApp) throws Exception {
         return JSONObject.toJSONString(trSysDownloadService.downloadApp(tdSysApp));
     }
 
