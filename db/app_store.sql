@@ -10,6 +10,8 @@ CREATE TABLE `td_sys_admin` (
   PRIMARY KEY (`adminid`) USING BTREE
 ) ENGINE = InnoDB;
 
+INSERT INTO `td_sys_admin` VALUES ('1', 'admin', 'c62abcd390cc6920d3cb9a63e0cb9084');
+
 DROP TABLE IF EXISTS `td_sys_app`;
 CREATE TABLE `td_sys_app` (
   `appid` varchar(50) NOT NULL COMMENT 'APPID',

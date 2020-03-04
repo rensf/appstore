@@ -1,5 +1,6 @@
 package com.sys.appstore.exception;
 
+import com.sys.appstore.common.Result;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,11 +13,8 @@ public class GlobalExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler
-    public Map errorHandler(Exception e) {
-        e.printStackTrace();
-        Map map = new HashMap();
-        map.put("msg",e.getMessage());
-        return map;
+    public Result<?> errorHandler(GlobalException e) {
+        return Result.error(e.getCode(), e.getMessage());
     }
 
 }

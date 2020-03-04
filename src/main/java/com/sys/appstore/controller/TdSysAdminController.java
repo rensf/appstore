@@ -28,8 +28,8 @@ public class TdSysAdminController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String login(@RequestBody TdSysAdmin tdSysAdmin) throws Exception {
-        return JSON.toJSONString(tdSysAdminService.login(tdSysAdmin));
+    public TdSysAdmin login(@RequestBody TdSysAdmin tdSysAdmin) throws Exception {
+        return tdSysAdminService.login(tdSysAdmin);
     }
 
 }

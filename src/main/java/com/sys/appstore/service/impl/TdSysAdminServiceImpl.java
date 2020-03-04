@@ -1,6 +1,7 @@
 package com.sys.appstore.service.impl;
 
 import com.sys.appstore.entity.TdSysAdmin;
+import com.sys.appstore.exception.GlobalException;
 import com.sys.appstore.mapper.TdSysAdminMapper;
 import com.sys.appstore.service.ITdSysAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -26,10 +27,10 @@ public class TdSysAdminServiceImpl extends ServiceImpl<TdSysAdminMapper, TdSysAd
     public TdSysAdmin login(TdSysAdmin tdSysAdmin) throws Exception {
         TdSysAdmin admin = tdSysAdminMapper.selectAdminByName(tdSysAdmin.getAdminname());
         if (admin == null) {
-            throw new Exception("此用户不存在！");
+            throw new GlobalException(10001, "此用户不存在！");
         }
         if (!admin.getPassword().equals(MD5Util.makePwd(tdSysAdmin.getAdminname(), tdSysAdmin.getPassword()))) {
-            throw new Exception("用户名或密码不正确！");
+            throw new GlobalException(10002, "用户名或密码不正确！");
         }
         return admin;
     }
