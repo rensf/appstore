@@ -2,6 +2,7 @@ package com.sys.appstore.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.sys.appstore.common.Result;
 import com.sys.appstore.entity.TdSysAdmin;
 import com.sys.appstore.service.ITdSysAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,10 @@ public class TdSysAdminController {
     private ITdSysAdminService tdSysAdminService;
 
     @RequestMapping("/login")
-    @ResponseBody
-    public TdSysAdmin login(@RequestBody TdSysAdmin tdSysAdmin) throws Exception {
-        return tdSysAdminService.login(tdSysAdmin);
+    public Result login(@RequestBody TdSysAdmin tdSysAdmin) throws Exception {
+        Result<TdSysAdmin> result = new Result<>();
+        result.setResult(tdSysAdminService.login(tdSysAdmin));
+        return result;
     }
 
 }
