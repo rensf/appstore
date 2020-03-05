@@ -2,6 +2,9 @@ package com.sys.appstore.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sys.appstore.common.Result;
+import com.sys.appstore.entity.TdSysUser;
 import com.sys.appstore.service.ITdSysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +30,10 @@ public class TdSysUserController {
 
     @RequestMapping("/queryUser")
     @ResponseBody
-    public String queryUser(@RequestBody JSONObject param) throws Exception {
-        return JSONObject.toJSONString(tdSysUserService.selectUserByPage(param));
+    public Result queryUser(@RequestBody JSONObject param) throws Exception {
+        Result<IPage<TdSysUser>> result = new Result<>();
+        result.setResult(tdSysUserService.selectUserByPage(param));
+        return result;
     }
 }
 

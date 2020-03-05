@@ -38,7 +38,7 @@ CREATE TABLE `td_sys_user` (
   `password` varchar(50) NULL COMMENT '密码',
   `telno` varchar(50) NULL COMMENT '手机号',
   `email` varchar(50) NULL COMMENT '邮箱',
-  `createtime` varchar(50) NULL COMMENT '注册时间',
+  `createtime` datetime NULL COMMENT '注册时间',
   `flag` int(2) NOT NULL DEFAULT 1 COMMENT '生效标志',
   PRIMARY KEY (`userid`) USING BTREE
 ) ENGINE = InnoDB;

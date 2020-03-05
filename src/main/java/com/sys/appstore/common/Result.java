@@ -13,6 +13,8 @@ public class Result<T> implements Serializable {
 
     private String msg = "操作成功！";
 
+    private long timestamp = System.currentTimeMillis();
+
     private T result;
 
     public Result() {
