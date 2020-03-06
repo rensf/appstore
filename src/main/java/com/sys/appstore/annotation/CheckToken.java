@@ -6,6 +6,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @Inherited
-public @interface CheckLogin {
+public @interface CheckToken {
     boolean mustToke() default true;
 }
