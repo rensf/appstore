@@ -1,6 +1,6 @@
 package com.sys.appstore;
 
-import com.sys.appstore.annotation.CheckLoginInterceptor;
+import com.sys.appstore.annotation.CheckTokenInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,10 +17,10 @@ public class AppstoreApplication implements WebMvcConfigurer {
     }
 
     @Bean
-    public CheckLoginInterceptor CheckLoginInterceptor() {return new CheckLoginInterceptor();}
+    public CheckTokenInterceptor CheckTokenInterceptor() {return new CheckTokenInterceptor();}
 
     @Override
     public void addInterceptors(InterceptorRegistry interceptorRegistry) {
-        interceptorRegistry.addInterceptor(CheckLoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/**/*.css", "/**/*.js");
+        interceptorRegistry.addInterceptor(CheckTokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/**/*.css", "/**/*.js");
     }
 }
