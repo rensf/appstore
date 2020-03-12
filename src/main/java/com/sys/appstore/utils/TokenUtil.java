@@ -35,7 +35,7 @@ public class TokenUtil {
         if (redisUtil.expire(token, EXPIRE_TIME / 1000)) {
             return token;
         } else {
-            throw new GlobalException(20003, "token设置失败！");
+            throw new GlobalException("20003", "token设置失败！");
         }
     }
 

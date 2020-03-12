@@ -28,11 +28,11 @@ public class CheckTokenInterceptor extends HandlerInterceptorAdapter {
             if(request.getHeader("token") != null) {
                 String token = request.getHeader("token");
                 if(!redisUtil.hasKey(token)) {
-                    throw new GlobalException(20002, "登录过期！请重新登录！");
+                    throw new GlobalException("20002", "登录过期！请重新登录！");
                 }
                 return true;
             } else {
-                throw new GlobalException(20001, "非法访问！请重新登录！");
+                throw new GlobalException("20001", "非法访问！请重新登录！");
             }
         }
 

@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class GlobalException extends Exception {
 
-    private Integer code;
+    private String code;
 
-    public GlobalException(int code, String message) {
+    public GlobalException(String code, String message) {
         super(message);
         this.code = code;
     }

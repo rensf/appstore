@@ -29,10 +29,10 @@ public class TdSysAdminServiceImpl extends ServiceImpl<TdSysAdminMapper, TdSysAd
     public TdSysAdmin login(TdSysAdmin tdSysAdmin) throws Exception {
         TdSysAdmin admin = tdSysAdminMapper.selectAdminByName(tdSysAdmin.getAdminname());
         if (admin == null) {
-            throw new GlobalException(10001, "此用户不存在！");
+            throw new GlobalException("10001", "此用户不存在！");
         }
         if (!admin.getPassword().equals(MD5Util.makePwd(tdSysAdmin.getAdminname(), tdSysAdmin.getPassword()))) {
-            throw new GlobalException(10002, "用户名或密码不正确！");
+            throw new GlobalException("10002", "用户名或密码不正确！");
         }
         return admin;
     }

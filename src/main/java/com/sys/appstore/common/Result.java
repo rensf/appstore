@@ -9,7 +9,7 @@ public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer code = 0;
+    private String code = "0";
 
     private String msg = "操作成功！";
 
@@ -21,7 +21,7 @@ public class Result<T> implements Serializable {
 
     }
 
-    public static Result<Object> error(int code, String msg) {
+    public static Result<Object> error(String code, String msg) {
         Result<Object> result = new Result<Object>();
         result.setCode(code);
         result.setMsg(msg);

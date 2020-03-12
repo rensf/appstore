@@ -3,6 +3,7 @@ package com.sys.appstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sys.appstore.annotation.CheckToken;
 import com.sys.appstore.common.Result;
 import com.sys.appstore.entity.TdSysUser;
 import com.sys.appstore.service.ITdSysUserService;
@@ -28,6 +29,7 @@ public class TdSysUserController {
     @Autowired
     private ITdSysUserService tdSysUserService;
 
+    @CheckToken
     @RequestMapping("/queryUser")
     @ResponseBody
     public Result queryUser(@RequestBody JSONObject param) throws Exception {
