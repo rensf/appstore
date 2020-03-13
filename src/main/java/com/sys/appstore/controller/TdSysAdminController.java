@@ -43,6 +43,8 @@ public class TdSysAdminController {
         JSONObject obj = new JSONObject();
         obj.put("adminid", admin.getAdminid());
         obj.put("adminname", admin.getAdminname());
+        obj.put("telno", admin.getTelno());
+        obj.put("email", admin.getEmail());
         obj.put("token", token);
 
         result.setResult(obj);

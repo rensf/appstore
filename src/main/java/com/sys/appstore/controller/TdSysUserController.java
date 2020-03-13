@@ -31,7 +31,6 @@ public class TdSysUserController {
 
     @CheckToken
     @RequestMapping("/queryUser")
-    @ResponseBody
     public Result queryUser(@RequestBody JSONObject param) throws Exception {
         Result<IPage<TdSysUser>> result = new Result<>();
         result.setResult(tdSysUserService.selectUserByPage(param));

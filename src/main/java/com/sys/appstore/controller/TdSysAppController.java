@@ -3,6 +3,7 @@ package com.sys.appstore.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sys.appstore.annotation.CheckToken;
 import com.sys.appstore.common.Result;
 import com.sys.appstore.config.MyPropsConfig;
 import com.sys.appstore.entity.TdSysApp;
@@ -32,6 +33,7 @@ public class TdSysAppController {
     @Autowired
     private MyPropsConfig myProps;
 
+    @CheckToken
     @RequestMapping("/queryApp")
     public Result queryApp(@RequestBody JSONObject param) throws Exception {
         Result<IPage<TdSysApp>> result = new Result<>();
@@ -39,22 +41,26 @@ public class TdSysAppController {
         return result;
     }
 
+    @CheckToken
     @RequestMapping("/uploadApp")
     public String uploadApp(@RequestParam("file") MultipartFile file) throws IOException {
         return FileUtil.uploadFile(file, myProps.getFilepath());
     }
 
+    @CheckToken
     @RequestMapping("/previewAppImage/{filename}")
     public void previewAppImage(@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
         String filepath = myProps.getFilepath() + filename;
         FileUtil.checkFile(filepath, response);
     }
 
+    @CheckToken
     @RequestMapping("/addApp")
     public String addApp(@RequestBody TdSysApp tdSysApp) throws Exception {
         return JSONObject.toJSONString(tdSysAppService.addApp(tdSysApp));
     }
 
+    @CheckToken
     @RequestMapping("/delApp")
     public String delApp(@RequestBody TdSysApp tdSysApp) throws Exception {
         return JSONObject.toJSONString(tdSysAppService.delApp(tdSysApp));

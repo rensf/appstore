@@ -2,6 +2,7 @@ package com.sys.appstore.annotation;
 
 import com.sys.appstore.exception.GlobalException;
 import com.sys.appstore.utils.RedisUtil;
+import com.sys.appstore.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -30,6 +31,7 @@ public class CheckTokenInterceptor extends HandlerInterceptorAdapter {
                 if(!redisUtil.hasKey(token)) {
                     throw new GlobalException("20002", "登录过期！请重新登录！");
                 }
+                redisUtil.expire(token, TokenUtil.EXPIRE_TIME / 1000);
                 return true;
             } else {
                 throw new GlobalException("20001", "非法访问！请重新登录！");

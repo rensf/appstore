@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TdSysAdminMapper extends BaseMapper<TdSysAdmin> {
 
-    @Select("select * from td_sys_admin where adminname = #{adminname}")
+    @Select("select * from td_sys_admin where adminname = #{adminname} and flag = 1")
     TdSysAdmin selectAdminByName(String adminname);
 
 }

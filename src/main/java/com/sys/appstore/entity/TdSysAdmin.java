@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author rensf
@@ -34,6 +34,21 @@ public class TdSysAdmin implements Serializable {
      * 密码
      */
     private String password;
+
+    /**
+     * 手机号
+     */
+    private String telno;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 生效标志
+     */
+    private Integer flag = 1;
 
 
 }
