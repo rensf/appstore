@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/app_store?serverTimezone=GMT%2B8
-    username: root
-    password: 263661
+    username: renshaofei
+    password: rsf123
   redis:
     host: 127.0.0.1
     port: 6379
@@ -13,7 +13,8 @@ spring:
         max-wait: 1
         max-idle: 8
         min-idle: 0
-    timeout: 0
+    timeout: 5000
+    database: 0
 server:
   port: 8082
 
@@ -22,4 +23,4 @@ logging:
     com.sys.appstore: debug
 
 project:
-  filepath: D:\tmp\
+  filepath: ./file/image/

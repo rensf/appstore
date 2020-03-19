@@ -47,7 +47,6 @@ public class TdSysAppController {
         return FileUtil.uploadFile(file, myProps.getFilepath());
     }
 
-    @CheckToken
     @RequestMapping("/previewAppImage/{filename}")
     public void previewAppImage(@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
         String filepath = myProps.getFilepath() + filename;
