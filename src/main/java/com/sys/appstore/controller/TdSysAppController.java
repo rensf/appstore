@@ -43,8 +43,10 @@ public class TdSysAppController {
 
     @CheckToken
     @RequestMapping("/uploadApp")
-    public String uploadApp(@RequestParam("file") MultipartFile file) throws IOException {
-        return FileUtil.uploadFile(file, myProps.getFilepath());
+    public Result uploadApp(@RequestParam("file") MultipartFile file) throws IOException {
+        Result<String> result = new Result<>();
+        result.setResult(FileUtil.uploadFile(file, myProps.getFilepath()));
+        return result;
     }
 
     @RequestMapping("/previewAppImage/{filename}")

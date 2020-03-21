@@ -12,7 +12,7 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ResponseBody
-    @ExceptionHandler
+    @ExceptionHandler(value = GlobalException.class)
     public Result<?> errorHandler(GlobalException e) {
         return Result.error(e.getCode(), e.getMessage());
     }
