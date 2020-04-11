@@ -23,4 +23,4 @@ logging:
     com.sys.appstore: debug
 
 project:
-  filepath: ./file/image/
+  filepath: ./file/
