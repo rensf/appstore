@@ -32,7 +32,7 @@ public class TrSysComment implements Serializable {
     private String userid;
 
     /**
-     * 等级
+     * 星级
      */
     private Integer level;
 
