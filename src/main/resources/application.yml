@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/app_store?serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/app_store?serverTimezone=GMT%2B8&characterEncoding=utf-8
     username: root
     password: '263661'
   redis:
@@ -15,6 +15,8 @@ spring:
         min-idle: 0
     timeout: 5000
     database: 0
+    password: 123456
+
 server:
   port: 8082
 

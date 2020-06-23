@@ -36,6 +36,11 @@ public class TdSysAdmin implements Serializable {
     private String password;
 
     /**
+     * 头像
+     */
+    private String headurl;
+
+    /**
      * 手机号
      */
     private String telno;
